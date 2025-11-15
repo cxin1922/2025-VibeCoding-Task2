@@ -1,242 +1,559 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-Hant">
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Brand Revolution</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name · Frontend Dev — 個人品牌網站範本</title>
+  <meta name="description" content="個人品牌網站範本：介紹前端工程師背景、展示技能與作品集，並提供聯絡方式。此檔案為 Phase 2 更新（About 區已替換），所有圖片皆使用 Unsplash RAW 圖片 URL，可直接於 GitHub Pages 顯示。" />
+  <style>
+    /* CSS:BASE-START */
+    :root{
+      --bg:#071029;
+      --panel:#0b1726;
+      --primary:#1ea7c7;
+      --muted:#bfcbd6;
+      --muted-2:#9aa6b3;
+      --radius:12px;
+      --maxwidth:1100px;
+    }
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    *,*::before,*::after{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg) 0%, #021026 100%);
+      color:var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden; /* 避免水平捲動 */
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--maxwidth);
+      margin:0 auto;
+      padding:0 16px;
+    }
+
+    img{max-width:100%;height:auto;display:block;border-radius:8px;}
+    a{color:inherit;text-decoration:none;}
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px;}
+
+    .badge{
+      display:inline-block;
+      padding:4px 8px;
+      background:rgba(255,255,255,0.04);
+      color:var(--muted-2);
+      border-radius:999px;
+      font-size:12px;
+    }
+
+    /* 小按鈕通用 */
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:var(--primary);
+      color:#041021;
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted-2);
+    }
+    /* CSS:BASE-END */
+
+
+    /* CSS:HERO-START */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(7,16,41,0.85), rgba(7,16,41,0.7));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 18px rgba(2,6,12,0.6);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+    }
+
+    .logo{
+      font-weight:600;
+      color: #eaf6fb;
+      letter-spacing:0.2px;
+      font-size:16px;
+    }
+
+    .nav-list{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .nav-link{
+      padding:8px 10px;
+      border-radius:8px;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus{
+      color:var(--primary);
+      background:rgba(30,167,199,0.06);
+      outline:none;
+    }
+
+    .section{
+      padding:36px 0;
+    }
+
+    .section-hero{
+      padding-top:56px;
+      padding-bottom:36px;
+    }
+
+    .hero-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      align-items:flex-start;
+      justify-content:center;
+      padding:32px 0;
+    }
+
+    .hero-grid{
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      align-items:center;
+    }
+
+    .hero-title{
+      color:#ffffff;
+      font-size:24px;
+      margin:0 0 8px 0;
+      letter-spacing:0.2px;
+    }
+
+    .hero-sub{
+      color:var(--muted-2);
+      margin:0 0 16px 0;
+      font-size:15px;
+      max-width:62ch;
+    }
+
+    .hero-figure{
+      width:100%;
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:6px;
+    }
+    /* CSS:HERO-END */
+
+
+    /* CSS:ABOUT-START */
+    .section-about{
+      padding-top:28px;
+      padding-bottom:28px;
+    }
+
+    .section-title{
+      font-size:18px;
+      color:#e9f7fb;
+      margin:0 0 10px 0;
+    }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* About 專屬 */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      align-items:center;
+    }
+
+    .about-content{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .about-lead{
+      color:var(--muted-2);
+      margin:0 0 6px 0;
+      font-size:15px;
+    }
+
+    .about-para{
+      margin:0;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    .about-list{
+      margin:8px 0 0 0;
+      padding:0;
+      list-style: none;
+      display:block;
+    }
+
+    .about-list li{
+      margin:8px 0;
+      padding-left:18px;
+      position:relative;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    .about-list li::before{
+      content: '▹';
+      position:absolute;
+      left:0;
+      color:var(--primary);
+      font-weight:700;
+      top:0;
+      line-height:1;
+    }
+
+    .about-figure{
+      max-width:520px;
+      margin:0;
+      display:block;
+      overflow:hidden;
+      border-radius:10px;
+    }
+
+    .about-actions{
+      display:flex;
+      gap:10px;
+      margin-top:8px;
+      flex-wrap:wrap;
+    }
+    /* CSS:ABOUT-END */
+
+
+    /* CSS:SKILLS-START */
+    .section-skills{
+      padding-top:28px;
+      padding-bottom:28px;
+    }
+
+    .skill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:12px 0 0 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .skill-item{
+      background:rgba(255,255,255,0.03);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted-2);
+    }
+    /* CSS:SKILLS-END */
+
+
+    /* CSS:PROJECTS-START */
+    .section-projects{
+      padding-top:28px;
+      padding-bottom:28px;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+
+    .project-card{
+      display:block;
+      padding:12px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .project-thumb{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:8px;
+      margin-bottom:10px;
+    }
+
+    .project-title{
+      margin:0 0 8px 0;
+      font-size:15px;
+      color:#eaf6fb;
+    }
+
+    .project-desc{
+      margin:0;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+    /* CSS:PROJECTS-END */
+
+
+    /* CSS:CONTACT-START */
+    .section-contact{
+      padding-top:28px;
+      padding-bottom:56px;
+    }
+
+    .contact-list{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin:12px 0 0 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .contact-item a{
+      display:inline-block;
+      padding:8px 10px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted-2);
+      text-decoration:none;
+    }
+
+    .contact-item a:hover{ color:var(--primary); }
+    /* CSS:CONTACT-END */
+
+
+    /* CSS:RWD-START */
+    @media (min-width:768px){
+      .hero-grid{
+        grid-template-columns: 1fr 420px;
+        gap:28px;
+      }
+
+      .hero-title{ font-size:28px; }
+      .hero-sub{ font-size:16px; }
+
+      /* About 區在平板以上改為左右雙欄：文字左、圖片右 */
+      .about-grid{
+        grid-template-columns: 1fr 420px;
+        gap:20px;
+        align-items:center;
+      }
+
+      .projects-grid{
+        grid-template-columns: 1fr 1fr;
+        gap:16px;
+      }
+    }
+
+    @media (min-width:1200px){
+      .container{ padding:0 24px; }
+      .hero-title{ font-size:32px; }
+    }
+    /* CSS:RWD-END */
+
+  </style>
 </head>
-
 <body>
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
-        <div class="container d-flex align-items-center">
-
-            <h1 class="logo me-auto"><a href="index.html">Brand Revolution</a></h1>
-
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Service</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="nav-link scrollto" href="#contact">Contacts</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav>
-
-            <a href="#services" class="get-started-btn scrollto">Let’s Start</a>
-        </div>
+  <div class="page">
+    <header class="site-header">
+      <div class="container nav" role="navigation" aria-label="主導覽列">
+        <div class="logo">Your Name · Frontend Dev</div>
+        <nav>
+          <ul class="nav-list" role="menu">
+            <li role="none"><a class="nav-link" role="menuitem" href="#hero">首頁</a></li>
+            <li role="none"><a class="nav-link" role="menuitem" href="#about">關於我</a></li>
+            <li role="none"><a class="nav-link" role="menuitem" href="#skills">技能</a></li>
+            <li role="none"><a class="nav-link" role="menuitem" href="#projects">作品集</a></li>
+            <li role="none"><a class="nav-link" role="menuitem" href="#contact">聯絡我</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Brand Revolution</h1>
-            <h2>
-                Signature Website Design / Stunning Visual Identity / Strong Social Media / Irresistible Packaging<br>
-                We make your business unforgettable
-            </h2>
-            <div class="d-flex">
-                <a href="#about" class="btn-get-started scrollto">Let’s Start</a>
+    <main>
+      <!-- SECTION:HERO-START -->
+      <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
+        <div class="container hero-wrap">
+          <div class="hero-grid">
+            <div>
+              <!-- 全站唯一 h1 -->
+              <h1 id="hero-heading" class="hero-title">個人作品與履歷 — 範本主視覺</h1>
+              <p class="hero-sub">
+                這裡是簡短的主視覺說明；未來會放一句話自我介紹、核心職稱（例如 Frontend Developer）與行動呼籲（如瀏覽作品集或下載履歷）。
+              </p>
+              <div>
+                <a class="btn btn-primary" href="#projects">查看作品集</a>
+                <a class="btn btn-ghost" href="mailto:hello@example.com">寄信給我</a>
+              </div>
+              <p style="margin-top:12px;color:var(--muted-2);font-size:13px;">
+                提示：之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 貼回來完全取代這一區。
+              </p>
             </div>
+
+            <figure class="hero-figure about-figure panel" aria-hidden="false">
+              <!-- Hero 圖片（Unsplash RAW URL） -->
+              <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80" alt="在筆電前撰寫程式碼的開發者與工作區" loading="lazy" />
+            </figure>
+          </div>
         </div>
-    </section>
-    <!-- End Hero -->
+      </section>
+      <!-- SECTION:HERO-END -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about section-bg">
-
+      <!-- SECTION:ABOUT-START -->
+      <section id="about" class="section section-about" aria-labelledby="about-heading">
         <div class="container">
+          <div class="panel">
+            <h2 id="about-heading" class="section-title">關於我</h2>
 
-            <div class="section-title">
-                <h2>ABOUT</h2>
-                <p style="font-size: 20px;">Complete Brand Identity Solutions for Modern Businesses</p>
-            </div>
+            <div class="about-grid">
+              <div class="about-content">
+                <p class="about-lead">
+                  我目前從事前端工程與教學，同時接受接案專案。主要技能包含：HTML5、CSS3（RWD）、React、TypeScript，以及可存取性與效能優化。
+                </p>
 
-            <div class="row justify-content-center align-items-start">
+                <p class="about-para">
+                  我來自工程與教學背景，做事注重溝通與把複雜概念說清楚，喜歡以系統化的方式拆解問題並交付可維護的前端元件與文件。
+                </p>
 
-                <!-- Left Content -->
-                <div class="col-lg-6" data-aos="fade-right">
+                <ul class="about-list" aria-hidden="false">
+                  <li>量產型元件開發與維護（可提升團隊開發效率）</li>
+                  <li>前端效能與可存取性改善（讓產品更穩健、覆蓋更多使用者）</li>
+                  <li>技術分享與教學（能把技術用淺顯方式傳達給團隊或學生）</li>
+                </ul>
 
-                    <div class="content">
-                        <h3 class="about-title">We Create Brands That People Fall in Love With</h3>
-
-                        <p class="about-text">
-                            A successful brand is more than a logo — it’s an experience.<br>
-                            We design visual identities, powerful websites, and irresistible marketing materials that
-                            help your business stand out in today's competitive landscape.
-                        </p>
-
-                        <ul class="about-list">
-                            <li><i class="bi bi-check-circle-fill"></i> <strong>Website Design:</strong> Modern, elegant,
-                                fast, and mobile-friendly.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> <strong>Visual Identity:</strong> Logo design,
-                                color palette, typography, brand guidelines.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> <strong>Social Media:</strong> Customized post templates
-                                and high-impact visuals.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> <strong>Packaging:</strong> Beautiful, memorable,
-                                and designed to sell.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> <strong>Brand Strategy:</strong> Tone of voice,
-                                key messages, brand personality.</li>
-                        </ul>
-
-                    </div>
-
+                <div class="about-actions">
+                  <a class="btn btn-primary" href="#projects">查看作品集</a>
+                  <a class="btn btn-ghost" href="#contact">聯絡我</a>
                 </div>
 
-                <!-- Right Images -->
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="about-images">
-                        <img src="https://imgur.com/mPduIgK.jpg" class="img-fluid about-img mb-4" alt="">
-                        <img src="https://imgur.com/YZqx1R9.jpg" class="img-fluid about-img mb-4" alt="">
-                        <img src="https://imgur.com/wAD3dpn.jpg" class="img-fluid about-img mb-4" alt="">
-                        <img src="https://imgur.com/g6mJWWU.jpg" class="img-fluid about-img mb-4" alt="">
-                        <img src="https://imgur.com/UYdVjlr.jpg" class="img-fluid about-img" alt="">
-                    </div>
-                </div>
+                <p style="margin-top:10px;color:var(--muted-2);font-size:13px;">
+                  提示：之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section程式碼整段貼回來，取代這一區（含註解間的全部內容）。
+                </p>
+              </div>
 
+              <figure class="about-figure" aria-hidden="false">
+                <!-- About 圖片（Unsplash RAW URL：女性工程師示意） -->
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80" alt="穿著休閒的女性工程師在筆電前寫程式" loading="lazy" />
+              </figure>
             </div>
-
+          </div>
         </div>
+      </section>
+      <!-- SECTION:ABOUT-END -->
 
-    </section>
-    <!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+      <!-- SECTION:SKILLS-START -->
+      <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
         <div class="container">
-
-            <div class="section-title">
-                <h2>SERVICES</h2>
-                <p style="font-size: 20px;">What We Can Do For Your Business</p>
-            </div>
-
-            <div class="row">
-
-                <!-- Service Item 1 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bi bi-palette"></i></div>
-                        <h4>Brand Identity</h4>
-                        <p>Logo, typography, colors, brand guidelines — everything to define your brand visually.</p>
-                    </div>
-                </div>
-
-                <!-- Service Item 2 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
-                    data-aos="zoom-in" data-aos-delay="200">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bi bi-display"></i></div>
-                        <h4>Website Design</h4>
-                        <p>Beautiful, responsive, and fast websites designed for modern businesses.</p>
-                    </div>
-                </div>
-
-                <!-- Service Item 3 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0"
-                    data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bi bi-instagram"></i></div>
-                        <h4>Social Media</h4>
-                        <p>Eye-catching marketing visuals and templates for all major social platforms.</p>
-                    </div>
-                </div>
-
-                <!-- Service Item 4 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0"
-                    data-aos="zoom-in" data-aos-delay="400">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bi bi-box-seam"></i></div>
-                        <h4>Packaging Design</h4>
-                        <p>Memorable packaging that stands out on shelves and strengthens your brand.</p>
-                    </div>
-                </div>
-
-            </div>
-
+          <h2 id="skills-heading" class="section-title">技能（占位）</h2>
+          <div class="panel">
+            <p>這裡目前列出常見技能作為占位：HTML、CSS、RWD、Accessibility、React、TypeScript 等。</p>
+            <p>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼回來，取代這一區（含註解間的全部內容）。</p>
+            <ul class="skill-list" aria-hidden="false">
+              <li class="skill-item">HTML / Semantic</li>
+              <li class="skill-item">CSS / RWD</li>
+              <li class="skill-item">JavaScript (不在本站範例執行)</li>
+              <li class="skill-item">React / Component</li>
+              <li class="skill-item">Accessibility</li>
+            </ul>
+          </div>
         </div>
-    </section>
-    <!-- End Services Section -->
+      </section>
+      <!-- SECTION:SKILLS-END -->
 
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+      <!-- SECTION:PROJECTS-START -->
+      <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
         <div class="container">
+          <h2 id="projects-heading" class="section-title">作品集（占位）</h2>
+          <div class="projects-grid">
+            <article class="project-card panel" aria-labelledby="proj1-title">
+              <img class="project-thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="作品示意圖：網頁介面設計" loading="lazy" />
+              <h3 id="proj1-title" class="project-title">專案範例 A</h3>
+              <p class="project-desc">這裡是專案 A 的簡短說明。未來會放專案圖片、描述、技術與連結。</p>
+            </article>
 
-            <div class="section-title">
-                <h2>PORTFOLIO</h2>
-                <p style="font-size: 20px;">Recent Work</p>
-            </div>
+            <article class="project-card panel" aria-labelledby="proj2-title">
+              <img class="project-thumb" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="作品示意圖：應用程式介面" loading="lazy" />
+              <h3 id="proj2-title" class="project-title">專案範例 B</h3>
+              <p class="project-desc">這裡是專案 B 的簡短說明。之後會用 Section SDD 的 Prompt 產生新的 section 並取代此處。</p>
+            </article>
+          </div>
 
-            <div class="row portfolio-container" data-aos="fade-up">
-
-                <!-- Repeat your existing portfolio items here -->
-                <!-- (Not edited because your About section is the requested update) -->
-
-            </div>
-
+          <p style="margin-top:14px;color:var(--muted-2);font-size:13px;">
+            提示：之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼回來，取代這一區（含註解間的全部內容）。
+          </p>
         </div>
-    </section>
-    <!-- End Portfolio Section -->
+      </section>
+      <!-- SECTION:PROJECTS-END -->
 
+      <!-- SECTION:CONTACT-START -->
+      <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <h2 id="contact-heading" class="section-title">聯絡我（占位）</h2>
+          <div class="panel">
+            <p>若要示範聯絡資訊，請使用下列預設連結格式（請替換為真實資料）：</p>
+            <ul class="contact-list">
+              <li class="contact-item"><a href="mailto:hello@example.com">hello@example.com</a></li>
+              <li class="contact-item"><a href="tel:+886900000000">+886 900 000 000</a></li>
+              <li class="contact-item"><a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub / yourname</a></li>
+              <li class="contact-item"><a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn / yourname</a></li>
+            </ul>
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-
-        <div class="container d-md-flex py-4">
-
-            <div class="me-md-auto text-center text-md-start">
-                <div class="copyright">
-                    © Copyright <strong><span>Brand Revolution</span></strong>. All Rights Reserved
-                </div>
-            </div>
-
+            <p style="margin-top:12px;color:var(--muted-2);font-size:13px;">
+              提示：之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼回來，取代這一區（含註解間的全部內容）。
+            </p>
+          </div>
         </div>
+      </section>
+      <!-- SECTION:CONTACT-END -->
+
+    </main>
+
+    <footer>
+      <div class="container" style="padding:20px 0;color:var(--muted-2);font-size:13px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div>© <span class="badge">Your Name · Frontend Dev</span> — 範本。版權資訊保留。</div>
+          <div style="color:var(--muted-2);font-size:12px;">
+            此檔案為 Phase 2 更新：About 區已依 Section SDD 替換。所有 SECTION 插槽保留，CSS 未使用 ID 選擇器，所有示意圖來源為 Unsplash RAW 圖片。
+          </div>
+        </div>
+      </div>
     </footer>
-    <!-- End Footer -->
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-
+  </div>
 </body>
-
 </html>
